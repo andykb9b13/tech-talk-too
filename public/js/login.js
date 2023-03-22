@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // sessionStorage.setItem("email", email);
-      document.location.replace("/dashboard");
+      document.location.replace("/");
 
       alert("Login Successful");
     } else {
