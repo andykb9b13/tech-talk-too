@@ -7,7 +7,7 @@ const signupFormHandler = async function (event) {
 
   console.log(passwordEl.value, emailEl.value);
 
-  const response = await fetch("/api/user/", {
+  const response = await fetch("/api/user/signup", {
     method: "POST",
     body: JSON.stringify({
       name: nameEl.value,
