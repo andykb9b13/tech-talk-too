@@ -1,4 +1,41 @@
 const router = require("express").Router();
+const User = require("../../Models/User");
+const Post = require("../../Models/Post");
+const Profile = require("../../Models/Profile");
+
+// This is the api/user route
+
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/signup", async (req, res) => {
+  try {
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    console.log("This is newUser", newUser);
+
+    req.session.save(() => {
+      req.session.userId = newUser.user_id;
+      req.session.email = newUser.email;
+      req.session.loggedIn = true;
+
+      res.json(newUser);
+    });
+    // res.status(200).json(newUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/login", async (req, res) => {
   try {
