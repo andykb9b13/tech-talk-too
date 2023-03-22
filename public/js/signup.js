@@ -18,7 +18,7 @@ const signupFormHandler = async function (event) {
   });
 
   if (response.ok) {
-    document.location.replace("/profile");
+    document.location.replace("/dashboard");
     alert("New User Added!");
   } else {
     alert("Failed to sign up");
@@ -31,7 +31,5 @@ const loginRedirect = async (event) => {
 };
 
 document
-  .querySelector("#signupBtn")
+  .querySelector("#signup-btn")
   .addEventListener("click", signupFormHandler);
-
-document.querySelector("#loginBtn").addEventListener("click", loginRedirect);
