@@ -35,5 +35,3 @@ const signupRedirect = async (event) => {
 document
   .querySelector("#login-btn")
   .addEventListener("click", loginFormHandler);
-
-document.querySelector("#logout-btn").addEventListener("click", signupRedirect);

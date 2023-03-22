@@ -1,6 +1,18 @@
 const router = require("express").Router();
+const User = require("../../Models/User");
+const Post = require("../../Models/Post");
+const Profile = require("../../Models/Profile");
 
-// This is the / route
+// This is the api/user route
+
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+    res.status(200).json(allUsers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/signup", async (req, res) => {
   try {
