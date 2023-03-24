@@ -107,4 +107,24 @@ router.get("/blog", async (req, res) => {
   }
 });
 
+router.get("/comment", async (req, res) => {
+  try {
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/comment", async (req, res) => {
+  try {
+    const response = await Comment.create({
+      post_id: req.body.post_id,
+      user_id: req.session.user_id,
+      comment_text: req.body.comment_text,
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
