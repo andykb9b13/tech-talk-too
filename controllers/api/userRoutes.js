@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../../Models/User");
 const Post = require("../../Models/Post");
 const Profile = require("../../Models/Profile");
+const withAuth = require("../../utils/auth");
 
 // This is the api/user route
 
@@ -25,7 +26,7 @@ router.post("/signup", async (req, res) => {
     console.log("This is newUser", newUser);
 
     req.session.save(() => {
-      req.session.userId = newUser.user_id;
+      req.session.user_id = newUser.user_id;
       req.session.email = newUser.email;
       req.session.loggedIn = true;
 
@@ -58,7 +59,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.userId = user.user_id;
+      req.session.user_id = user.user_id;
       req.session.email = user.email;
       req.session.loggedIn = true;
 
@@ -76,6 +77,33 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+router.post("/blog", async (req, res) => {
+  try {
+    const response = await Post.create({
+      user_id: 1,
+      post_title: req.body.post_title,
+      post_content: req.body.post_content,
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blog", async (req, res) => {
+  try {
+    console.log("In the get blogs route");
+    const postData = await Post.findAll();
+    const blogs = postData.map((b) => b.get({ plain: true }));
+    // res.status(200).json(blogData);
+    console.log("Getting blogs", blogs);
+
+    res.status(200).json(blogs);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

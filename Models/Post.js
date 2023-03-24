@@ -18,8 +18,12 @@ Post.init(
         key: "user_id",
       },
     },
-    post_content: {
+    post_title: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    post_content: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },
