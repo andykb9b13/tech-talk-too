@@ -84,9 +84,24 @@ router.post("/blog", async (req, res) => {
   try {
     const response = await Post.create({
       user_id: 1,
+      post_title: req.body.post_title,
       post_content: req.body.post_content,
     });
     res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blog", async (req, res) => {
+  try {
+    console.log("In the get blogs route");
+    const postData = await Post.findAll();
+    const blogs = postData.map((b) => b.get({ plain: true }));
+    // res.status(200).json(blogData);
+    console.log("Getting blogs", blogs);
+
+    res.status(200).json(blogs);
   } catch (err) {
     res.status(500).json(err);
   }

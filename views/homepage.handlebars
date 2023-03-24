@@ -4,7 +4,7 @@
   <header class="blog-header lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="#">Subscribe</a>
+        <a class="link-secondary" href="/signup">Subscribe</a>
       </div>
       <div class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="#">Large</a>
@@ -53,16 +53,16 @@
 </div>
 
 <main class="container">
+  {{#if blogs.[0]}}
   <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing
-        new readers quickly and efficiently about what’s most interesting in
-        this post’s contents.</p>
+      <h1 class="display-4 fst-italic">{{blogs.[0].post_title}}</h1>
+      <p class="lead my-3">{{truncateWords blogs.[0].post_content}}</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue
           reading...</a></p>
     </div>
   </div>
+  {{/if}}
 
   <div class="row mb-2">
     {{> blogCard}}
@@ -109,7 +109,7 @@
         From the Firehose
       </h3>
 
-      {{> blogPosts}}
+      {{> articles}}
 
       <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>

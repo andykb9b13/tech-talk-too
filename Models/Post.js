@@ -18,17 +18,13 @@ Post.init(
         key: "user_id",
       },
     },
+    post_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     post_content: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: true,
     },
   },
   {
