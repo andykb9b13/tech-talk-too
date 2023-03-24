@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../../Models/User");
 const Post = require("../../Models/Post");
 const Profile = require("../../Models/Profile");
+const withAuth = require("../../utils/auth");
 
 // This is the api/user route
 
@@ -76,6 +77,18 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+router.post("/blog", async (req, res) => {
+  try {
+    const response = await Post.create({
+      user_id: 1,
+      post_content: req.body.post_content,
+    });
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
