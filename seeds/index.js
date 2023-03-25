@@ -8,11 +8,11 @@ const commentSeeds = require("./commentSeeds");
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await seedUsers();
-
-  await commentSeeds();
+  await userSeeds();
 
   await postSeeds();
+
+  await commentSeeds();
 
   process.exit(0);
 };
