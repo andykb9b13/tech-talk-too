@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const User = require("../../Models/User");
 const Post = require("../../Models/Post");
-const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
 
 // This is the api/user route
@@ -18,7 +17,7 @@ router.get("/", async (req, res) => {
 router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
-      name: req.body.name,
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
@@ -102,6 +101,33 @@ router.get("/blog", async (req, res) => {
     console.log("Getting blogs", blogs);
 
     res.status(200).json(blogs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/comment", async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      // where: {
+      //   post_id: req.body.post_id,
+      // },
+    });
+    const comments = commentData.map((c) => c.get({ plain: true }));
+    res.status(200).json(comments);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/comment", async (req, res) => {
+  try {
+    const response = await Comment.create({
+      post_id: req.body.post_id,
+      user_id: req.session.user_id,
+      comment_text: req.body.comment_text,
+    });
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
