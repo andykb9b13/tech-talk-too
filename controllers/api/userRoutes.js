@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const User = require("../../Models/User");
 const Post = require("../../Models/Post");
-const Profile = require("../../Models/Profile");
 const withAuth = require("../../utils/auth");
 
 // This is the api/user route
@@ -109,6 +108,13 @@ router.get("/blog", async (req, res) => {
 
 router.get("/comment", async (req, res) => {
   try {
+    const commentData = await Comment.findAll({
+      // where: {
+      //   post_id: req.body.post_id,
+      // },
+    });
+    const comments = commentData.map((c) => c.get({ plain: true }));
+    res.status(200).json(comments);
   } catch (err) {
     res.status(500).json(err);
   }

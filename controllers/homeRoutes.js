@@ -2,6 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const Post = require("../Models/Post");
 const User = require("../Models/User");
+const Comment = require("../Models/Comment");
 
 router.get("/", async (req, res) => {
   console.log("In the / route");
@@ -42,13 +43,16 @@ router.get("/signup", (req, res) => {
 router.get("/blog/:id", async (req, res) => {
   try {
     const blogData = await Post.findOne({
-      where: {
-        post_id: req.params.id,
+      where: { post_id: req.params.id },
+      include: {
+        model: Comment,
       },
     });
+    console.log("This is blogData from id route", blogData);
     const blog = blogData.get({ plain: true });
     res.render("blogPost", { blog });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
