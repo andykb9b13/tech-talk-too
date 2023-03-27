@@ -1,6 +1,6 @@
 const logout = async () => {
   try {
-    const response = await fetch("api/user/logout", {
+    const response = await fetch("/api/user/logout", {
       method: "POST",
     });
     if (response.ok) {

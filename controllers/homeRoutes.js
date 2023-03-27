@@ -6,10 +6,11 @@ const { Comment, Post, User } = require("../Models");
 
 router.get("/", async (req, res) => {
   console.log("In the / route");
+  console.log("req.session data", req.session);
   try {
     const postData = await Post.findAll();
     const blogs = postData.map((b) => b.get({ plain: true }));
-    console.log("This is the blogs data", blogs);
+    // console.log("This is the blogs data", blogs);
     res.render("homepage", { blogs });
   } catch (err) {
     res.status(500).json(err);
@@ -46,12 +47,17 @@ router.get("/blog/:id", async (req, res) => {
       // where: { post_id: req.params.id },
       include: [{ model: Comment }, { model: User }],
     });
-    console.log("This is blogData from id route", blogData);
+    const sessionData = {
+      isLoggedIn: req.session.loggedIn,
+      username: req.session.username,
+    };
+    console.log("sessionData", sessionData);
     const blog = blogData.get({ plain: true });
-    res.render("blogPost", { blog });
+    res.render("blogPost", { blog, sessionData });
     // res.status(200).json(blog);
   } catch (err) {
     console.log(err);
+    c;
     res.status(500).json(err);
   }
 });

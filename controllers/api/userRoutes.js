@@ -5,7 +5,7 @@ const withAuth = require("../../utils/auth");
 const Comment = require("../../Models/Comment");
 // This is the api/user route
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const allUsers = await User.findAll();
     res.status(200).json(allUsers);
@@ -130,7 +130,7 @@ router.get("/comment", async (req, res) => {
   }
 });
 
-router.post("/comment", async (req, res) => {
+router.post("/comment", withAuth, async (req, res) => {
   try {
     const response = await Comment.create({
       post_id: req.body.post_id,
