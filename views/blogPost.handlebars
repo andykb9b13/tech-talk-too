@@ -34,6 +34,7 @@
       <div class="card-body">
         <ul>
           {{#each blog.comments as |comment|}}
+            <p>User: {{comment.user_id}} Date: {{format_date comment.createdAt}}</p>
             <li>{{comment.comment_text}}</li>
             <hr />
           {{/each}}

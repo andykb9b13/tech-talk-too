@@ -1,3 +1,27 @@
 {{> navbar}}
 
+<section class="d-flex align-items-center" id="my-blogs">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 justify-content-center align-items-center">
+          <h2>My Articles</h2>
+          <hr>
+{{#each blogs as |blog|}}
+  <article class="blog-post">
+    <h2 class="blog-post-title mb-1">{{blog.post_title}}</h2>
+    <p class="blog-post-topic mb2 text-success">{{blog.post_topic}}</p>
+    <p>Written By: {{blog.user.username}}</p>
+    <p class="blog-post-meta">Created: {{format_date blog.createdAt}}</p>
+    <a href="/blog/{{blog.post_id}}">View Article</a>
+    
+  </article>
+  <hr />
+{{/each}}
+</div>
+</div>
+</div>
+</section>
+
 {{> post}}
+
