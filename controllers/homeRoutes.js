@@ -5,13 +5,15 @@ const withAuth = require("../utils/auth");
 const { Comment, Post, User } = require("../Models");
 
 router.get("/", async (req, res) => {
-  console.log("In the / route");
-  console.log("req.session data", req.session);
   try {
     const postData = await Post.findAll();
     const blogs = postData.map((b) => b.get({ plain: true }));
-    // console.log("This is the blogs data", blogs);
-    res.render("homepage", { blogs });
+    const sessionData = {
+      isLoggedIn: req.session.loggedIn,
+      username: req.session.username,
+    };
+    console.log("This is the sessionData", sessionData);
+    res.render("homepage", { blogs, sessionData });
   } catch (err) {
     res.status(500).json(err);
   }

@@ -21,8 +21,11 @@
           <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
       </ul>
-      <a class="btn btn-sm btn-outline-secondary" href="/login">Log In</a>
-      <button class="btn btn-sm btn-outline-secondary" id="logout-btn">Log Out</button>
+      {{#if sessionData.isLoggedIn}}
+        <button class="btn btn-sm btn-outline-secondary" id="logout-btn">Log Out</button>
+      {{else}}
+        <a class="btn btn-sm btn-outline-secondary" href="/login">Log In</a>
+      {{/if}}
     </div>
   </div>
 </nav>
