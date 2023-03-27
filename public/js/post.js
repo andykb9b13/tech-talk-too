@@ -3,9 +3,10 @@ const postFormHandler = async function (event) {
 
   const blogEl = document.querySelector("#blog-text");
   const blogTitleEl = document.querySelector("#blog-title");
+  const blogTopicEl = document.querySelector("#blog-topic");
 
   console.log(
-    "This is blogTitleEl. value and blogEl.value",
+    "This is blogTitleEl. value and blogEl.value and blogTopicEl.value",
     blogTitleEl.value,
     blogEl.value
   );
@@ -13,6 +14,7 @@ const postFormHandler = async function (event) {
   const response = await fetch("/api/user/blog", {
     method: "POST",
     body: JSON.stringify({
+      post_topic: blogTopicEl.value,
       post_title: blogTitleEl.value,
       post_content: blogEl.value,
     }),
