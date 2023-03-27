@@ -21,7 +21,11 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", withAuth, (req, res) => {
   try {
-    res.render("dashboard");
+    const sessionData = {
+      isLoggedIn: req.session.loggedIn,
+      username: req.session.username,
+    };
+    res.render("dashboard", { sessionData });
   } catch (err) {
     res.status(500).json(err);
   }
