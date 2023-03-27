@@ -13,7 +13,7 @@
         <p class="card-text">{{blog.post_content}}</p>
       </div>
     </div>
-
+{{#if sessionData.isLoggedIn}}
     <div class="container">
       <div class="card mb-3">
         <div class="card-header bg-dark text-white">
@@ -25,6 +25,7 @@
         </div>
       </div>
     </div>
+    {{/if}}
 
     <div class="card">
       <div class="card-header bg-dark text-white">
@@ -33,6 +34,8 @@
       <div class="card-body">
         <ul>
           {{#each blog.comments as |comment|}}
+            <p>{{comment.user_id}}</p> 
+              <p>Date: {{format_date comment.createdAt}}</p>
             <li>{{comment.comment_text}}</li>
             <hr />
           {{/each}}

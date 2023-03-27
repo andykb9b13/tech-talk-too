@@ -5,7 +5,7 @@ const withAuth = require("../../utils/auth");
 const Comment = require("../../Models/Comment");
 // This is the api/user route
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const allUsers = await User.findAll();
     res.status(200).json(allUsers);
@@ -26,6 +26,7 @@ router.post("/signup", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = newUser.user_id;
+      req.session.username = newUser.username;
       req.session.email = newUser.email;
       req.session.loggedIn = true;
 
@@ -59,6 +60,7 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = user.user_id;
+      req.session.username = user.username;
       req.session.email = user.email;
       req.session.loggedIn = true;
 
@@ -110,11 +112,13 @@ router.get("/blog", async (req, res) => {
 router.get("/comment/:id", async (req, res) => {
   try {
     const commentData = await Comment.findAll({
+      include: [{ model: User }],
       where: {
         post_id: req.params.id,
       },
     });
     const comments = commentData.map((c) => c.get({ plain: true }));
+    console.log("This is comments", comments);
     res.status(200).json(comments);
   } catch (err) {
     res.status(500).json(err);
@@ -130,7 +134,7 @@ router.get("/comment", async (req, res) => {
   }
 });
 
-router.post("/comment", async (req, res) => {
+router.post("/comment", withAuth, async (req, res) => {
   try {
     const response = await Comment.create({
       post_id: req.body.post_id,

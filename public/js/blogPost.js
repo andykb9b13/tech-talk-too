@@ -10,12 +10,6 @@ const getId = () => {
   return post_id;
 };
 
-// console.log(
-//   "This is comment_text and post_id",
-//   comment_text.value,
-//   post_id.value
-// );
-
 const createComment = async () => {
   try {
     const comment_text = await getText();
