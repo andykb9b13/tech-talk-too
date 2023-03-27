@@ -18,6 +18,10 @@ Post.init(
         key: "user_id",
       },
     },
+    post_topic: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     post_title: {
       type: DataTypes.STRING,
       allowNull: false,

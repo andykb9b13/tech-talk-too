@@ -3,13 +3,7 @@
 <div class="container">
   <header class="blog-header lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-        <a class="link-secondary" href="/signup">Subscribe</a>
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
-      </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
+      <div class="col-12 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,25 +30,16 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      {{! <a class="p-2 link-secondary" href="#">World</a>
-      <a class="p-2 link-secondary" href="#">U.S.</a>
-      <a class="p-2 link-secondary" href="#">Technology</a>
-      <a class="p-2 link-secondary" href="#">Design</a>
-      <a class="p-2 link-secondary" href="#">Culture</a>
-      <a class="p-2 link-secondary" href="#">Business</a>
-      <a class="p-2 link-secondary" href="#">Politics</a>
-      <a class="p-2 link-secondary" href="#">Opinion</a>
-      <a class="p-2 link-secondary" href="#">Science</a>
-      <a class="p-2 link-secondary" href="#">Health</a>
-      <a class="p-2 link-secondary" href="#">Style</a>
-      <a class="p-2 link-secondary" href="#">Travel</a> }}
+      <a class="p-2 link-secondary" href="#">New Developments</a>
+      <a class="p-2 link-secondary" href="#">Environment</a>
+      <a class="p-2 link-secondary" href="#">Future Tech</a>
     </nav>
   </div>
 </div>
 
 <main class="container">
   {{#if blogs.[0]}}
-  <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+  <div class="p-4 p-md-5 mb-4 rounded text-bg-dark" id="top-article">
     <div class="col-md-6 px-0">
       <h1 class="display-4 fst-italic">{{blogs.[0].post_title}}</h1>
       <p class="lead my-3">{{truncateWords blogs.[0].post_content}}</p>
@@ -76,7 +61,7 @@
 
       <nav class="blog-pagination" aria-label="Pagination">
         <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
-        <a class="btn btn-outline-secondary rounded-pill disabled">Newer</a>
+        <a class="btn btn-outline-primary rounded-pill" href="#">Newer</a>
       </nav>
 
     </div>
@@ -85,9 +70,7 @@
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-light rounded">
           <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little
-            bit about your publication, writers, content, or something else
-            entirely. Totally up to you.</p>
+          <p class="mb-0">"Welcome to our tech blog, where we explore the latest in technological innovations and trends. Stay up-to-date with our informative articles on software, hardware, gadgets, mobile devices, AI, and the internet of things. Join our community of tech enthusiasts and stay ahead in the digital world."</p>
         </div>
 
         <div class="p-4">
@@ -123,12 +106,9 @@
 </main>
 
 <footer class="blog-footer">
-  <p>Blog template built for
-    <a href="https://getbootstrap.com/">Bootstrap</a>
-    by
-    <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  
   <p>
-    <a href="#">Back to top</a>
+    <a href="/">Back to top</a>
   </p>
 </footer>
 

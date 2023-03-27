@@ -82,7 +82,8 @@ router.post("/logout", (req, res) => {
 router.post("/blog", async (req, res) => {
   try {
     const response = await Post.create({
-      user_id: 1,
+      user_id: req.session.user_id,
+      post_topic: req.body.post_topic,
       post_title: req.body.post_title,
       post_content: req.body.post_content,
     });
