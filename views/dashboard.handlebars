@@ -4,7 +4,7 @@
   <section id="create-post-section">
     <div class="container">
       <div class="row">
-        <div class="col-3 m-auto ">
+        <div class="col-3 m-auto">
           <button
             type="button"
             class="btn btn-secondary"
@@ -14,68 +14,84 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 
-<section id="my-blogs" class="text-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 justify-content-center align-items-center">
-        <h2>My Articles</h2>
-        <hr />
-        {{#if blogs}}
-          {{#each blogs as |blog|}}
-            <article class="blog-post">
-              <h2 class="blog-post-title mb-1">{{blog.post_title}}</h2>
-              <p
-                class="blog-post-topic mb2 text-success"
-              >{{blog.post_topic}}</p>
-              <p>Written By: {{blog.user.username}}</p>
-              <p class="blog-post-meta">Created:
-                {{format_date blog.createdAt}}</p>
-              <a href="/blog/{{blog.post_id}}" class="text-white">View Article</a>
-            </article>
-            <hr />
-          {{/each}}
-        {{else}}
-          <h2>You Haven't Written Any Articles Yet...</h2>
-        {{/if}}
+  <section id="my-blogs" class="text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 justify-content-center align-items-center">
+          <h2>My Articles</h2>
+          <hr />
+          {{#if blogs}}
+            {{#each blogs as |blog|}}
+              <article class="blog-post">
+                <h2 class="blog-post-title mb-1">{{blog.post_title}}</h2>
+                <p
+                  class="blog-post-topic mb2 text-success"
+                >{{blog.post_topic}}</p>
+                <p>Written By: {{blog.user.username}}</p>
+                <p class="blog-post-meta">Created:
+                  {{format_date blog.createdAt}}</p>
+                <a href="/blog/{{blog.post_id}}" class="text-white">View Article</a>
+              </article>
+              <hr />
+            {{/each}}
+          {{else}}
+            <h2>You Haven't Written Any Articles Yet...</h2>
+          {{/if}}
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-dark">
-        <h5 class="modal-title text-white" id="exampleModalLabel">New Article</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body col 12">
-<section class="d-flex align-items-center">
-  <div class="container" id="modalBody">
-    <div class="row">
-      <form class="col-12 justify-content-center align-items-center">
-        <div class="container" id="blog-container"> 
-          <h2>Create A Post</h2>
-          <label for="blog-title">Blog Title</label>
-          <input type="text" id="blog-title" />
-          <label for="blog-topic">Topic</label>
-          <input type="text" id="blog-topic" />
-          <div class="form-group justify-content-center">
-            <label for="blog-text">Blog Text</label>
-            <textarea class="form-control" id="blog-text" rows="10"></textarea>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title text-white" id="exampleModalLabel">New Article</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body col 12">
+          <div class="container" id="modalBody">
+            <div class="row">
+              <form class="col-12 justify-content-center align-items-center">
+                <div class="container" id="blog-container">
+                  <h2>Create A Post</h2>
+                  <label for="blog-title">Blog Title</label>
+                  <input type="text" id="blog-title" />
+                  <label for="blog-topic">Topic</label>
+                  <input type="text" id="blog-topic" />
+                  <div class="form-group justify-content-center">
+                    <label for="blog-text">Blog Text</label>
+                    <textarea
+                      class="form-control"
+                      id="blog-text"
+                      rows="10"
+                    ></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-  </section>
-    </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" id="submit-btn">Create Post</button>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" id="submit-btn">Create
+            Post</button>
+        </div>
       </div>
     </div>
   </div>

@@ -29,4 +29,19 @@ const createComment = async () => {
   }
 };
 
+const deletePost = async () => {
+  const post_id = await getId();
+  console.log("This is post_id", post_id);
+  const response = await fetch(`/api/user/blog/${post_id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    document.location.replace("/");
+    alert("Article Deleted");
+  } else {
+    alert("Failed to delete article");
+  }
+};
+
 document.querySelector("#comment-btn").addEventListener("click", createComment);
+document.querySelector("#delete-btn").addEventListener("click", deletePost);

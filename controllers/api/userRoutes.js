@@ -109,6 +109,31 @@ router.get("/blog", async (req, res) => {
   }
 });
 
+router.put("/blog/:id", async (req, res) => {
+  try {
+    const editedPost = await Post.update(req.body, {
+      where: {
+        post_id: req.params.id,
+      },
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete("/blog/:id", async (req, res) => {
+  try {
+    const deletedPost = await Post.destroy({
+      where: {
+        post_id: req.params.id,
+      },
+    });
+    res.status(200).json(deletedPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/comment/:id", async (req, res) => {
   try {
     const commentData = await Comment.findAll({

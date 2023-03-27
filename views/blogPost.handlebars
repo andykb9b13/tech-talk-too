@@ -12,7 +12,15 @@
         <p>{{format_date blog.createdAt}}</p>
         <p class="card-text">{{blog.post_content}}</p>
       </div>
+          {{#if sessionData.isLoggedIn}}
+    <div>
+      <button class="btn btn-secondary" id="edit-btn">Edit Article</button>
+      <button class="btn btn-secondary" id="delete-btn">Delete Article</button>
     </div>
+    {{/if}}
+    </div>
+
+
 {{#if sessionData.isLoggedIn}}
     <div class="container">
       <div class="card mb-3">
