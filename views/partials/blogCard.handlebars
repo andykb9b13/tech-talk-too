@@ -1,15 +1,15 @@
 {{> test}}
 <div class="row mb-2">
-{{#if blogs.[0]}}
+{{#if blogs.[2]}}
 <div class="col-md-12">
     <div
       class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
       <div class="col p-4 d-flex flex-column position-static text-white"  id="blog-card-1">
-        <strong class="d-inline-block mb-2 text-primary">{{blogs.[0].post_topic}}</strong>
-        <h3 class="mb-0">{{blogs.[0].post_title}}</h3>
-        <div class="mb-1 text-muted">{{format_date blogs.[0].createdAt}}</div>
-        <p class="card-text mb-auto">{{truncateWords blogs.[0].post_content}}...</p>
-        <a href="/blog/{{blogs.[0].post_id}}" class="stretched-link">Continue reading</a>
+        <strong class="d-inline-block mb-2 text-primary">{{blogs.[2].post_topic}}</strong>
+        <h3 class="mb-0">{{blogs.[2].post_title}}</h3>
+        <div class="mb-1 text-muted">{{format_date blogs.[2].createdAt}}</div>
+        <p class="card-text mb-auto">{{truncateWords blogs.[2].post_content}}...</p>
+        <a href="/blog/{{blogs.[2].post_id}}" class="stretched-link text-white">Continue reading</a>
       </div>
     </div>
   {{/if}}
@@ -23,7 +23,7 @@
           <h3 class="mb-0">{{blogs.[1].post_title}}</h3>
           <div class="mb-1 text-muted">{{format_date blogs.[1].createdAt}}</div>
           <p class="mb-auto">{{truncateWords blogs.[1].post_content}}...</p>
-          <a href="/blog/{{blogs.[1].post_id}}" class="stretched-link">Continue reading</a>
+          <a href="/blog/{{blogs.[1].post_id}}" class="stretched-link text-white">Continue reading</a>
         </div>
       </div>
     </div>
