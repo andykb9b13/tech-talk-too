@@ -1,16 +1,8 @@
 {{> navbar}}
-<section class="form-signin w-100 m-auto">
-  <div class="container">
-    <form>
-      <img
-        class="mb-4"
-        src="../assets/brand/bootstrap-logo.svg"
-        alt=""
-        width="72"
-        height="57"
-      />
+<section id="login-section" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-center text-white">
+    <form class="d-flex flex-column justify-content-center align-items-center">
       <h1 class="h3 mb-3 fw-normal">Please Log In</h1>
-
       <div class="form-floating">
         <input
           type="email"
@@ -18,7 +10,7 @@
           id="email"
           placeholder="name@example.com"
         />
-        <label for="floatingInput">Email address</label>
+        <label for="floatingInput" class="text-dark">Email address</label>
       </div>
       <div class="form-floating">
         <input
@@ -27,13 +19,12 @@
           id="password"
           placeholder="Password"
         />
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword" class="text-dark">Password</label>
       </div>
 
-      <button class="btn btn-lg btn-primary mb-4" type="submit" id="login-btn">Log in</button>
-      <h4 class="mb-4">Not A User?</h4>
-      <a href="/signup" type="btn btn-primary">Sign Up</a>
-      <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+      <button class="btn btn-lg btn-outline-secondary text-white mb-4" type="submit" id="login-btn">Log in</button>
+      <h5 class="mb-4">Not A User?</h5>
+      <a href="/signup"  class="text-white">Sign Up</a>
     </form>
   </div>
 </section>

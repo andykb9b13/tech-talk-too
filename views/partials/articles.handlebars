@@ -1,13 +1,12 @@
 {{#each blogs as |blog|}}
   <article class="blog-post">
     <h2 class="blog-post-title mb-1">{{blog.post_title}}</h2>
-    <p class="blog-post-meta">{{format_date
-        blog.createdAt
-        format="MMM DD, YYYY"
-      }}
-      <a href="#">Mark</a></p>
+    <p class="blog-post-topic mb2 text-success">{{blog.post_topic}}</p>
+    <p class="blog-post-meta">{{format_date blog.createdAt}}
+      <a href="#">Insert User</a></p>
     <p>{{blog.post_content}}</p>
   </article>
+  <hr />
 {{/each}}
 
 {{! <script src="/js/blogs.js"></script> }}

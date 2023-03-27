@@ -1,3 +1,7 @@
+body {
+  font-family: "Roboto Mono", monospace;
+}
+
 #top-article {
   background-image: url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80");
   background-size: cover;
@@ -14,4 +18,25 @@
   background-image: url("https://images.unsplash.com/photo-1597733336794-12d05021d510?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80");
   background-size: cover;
   background-position: center;
+}
+
+#new-blog {
+  background-image: url("https://images.unsplash.com/photo-1576400883215-7083980b6193?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1413&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+#signup-section {
+  background-image: url("https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1478&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+#login-section {
+  background-image: url("https://images.unsplash.com/photo-1562575214-da9fcf59b907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }

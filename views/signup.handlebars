@@ -1,10 +1,10 @@
 {{> navbar}}
-<section>
-  <div class="container">
-  <h2>Signup</h2>
-  <form>
+<section id="signup-section" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-center text-white mt-20">  
+  <form class="d-flex flex-column justify-content-center align-items-center">
+    <h2>Signup</h2>
     <div class="mb-3">
-      <label for="email" class="form-label">Please Enter Your Email address</label>
+      <label for="email" class="form-label">Enter Your Email address</label>
       <input
         type="email"
         class="form-control"
@@ -13,20 +13,20 @@
       />
     </div>
     <div class="mb-3">
-      <label for="username" class="form-label">Please Enter You Username</label>
+      <label for="username" class="form-label">Choose A Username</label>
       <input type="text" class="form-control" id="username" />
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label">Please Enter A Password</label>
+      <label for="password" class="form-label">Choose A Password</label>
       <input type="password" class="form-control" id="password" />
     </div>
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-outline-secondary text-white"
       id="signup-btn"
     >Signup</button>
-    <h3>Already a user?</h3>
-    <a href="/login">Login</a>
+    <h5 class="mt-4">Already a user?</h5>
+    <a href="/login" class="text-white">Login</a>
   </form>
   </div>
 </section>

@@ -1,17 +1,23 @@
-<h2>Create A Post</h2>
-<div class="container">
-  <form>
-    <label for="blog-title">Blog Title</label>
-    <input type="text" id="blog-title" />
-    <label for="blog-topic">Topic</label>
-    <input type="text" id="blog-topic" />
-    <div class="form-group">
-      <label for="blog-text">Blog Text</label>
-      <textarea class="form-control" id="blog-text" rows="10"></textarea>
+<section class="text-white d-flex align-items-center" id="new-blog">
+  <div class="container">
+    <div class="row">
+      <form class="col-12 justify-content-center align-items-center">
+        <div>
+          <h2>Create A Post</h2>
+          <label for="blog-title">Blog Title</label>
+          <input type="text" id="blog-title" />
+          <label for="blog-topic">Topic</label>
+          <input type="text" id="blog-topic" />
+          <div class="form-group justify-content-center">
+            <label for="blog-text">Blog Text</label>
+            <textarea class="form-control" id="blog-text" rows="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn-secondary" id="submit-btn">Create
+            Post</button>
+          <a href="/" class="text-white">Back to Homepage</a>
+        </div>
+      </form>
     </div>
-    <button type="submit" class="btn btn-primary" id="submit-btn">Create Post</button>
-  </form>
-</div>
-<a href="/">Back to Homepage</a>
-
+  </div>
+</section>
 <script src="/js/post.js"></script>
