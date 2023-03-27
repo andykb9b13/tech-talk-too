@@ -4,7 +4,9 @@ const { Comment, Post, User } = require("../Models");
 
 router.get("/", async (req, res) => {
   try {
-    const postData = await Post.findAll();
+    const postData = await Post.findAll({
+      include: [{ model: User }],
+    });
     const blogs = postData.map((b) => b.get({ plain: true }));
     const sessionData = {
       isLoggedIn: req.session.loggedIn,

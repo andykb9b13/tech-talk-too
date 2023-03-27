@@ -3,7 +3,7 @@
     <h2 class="blog-post-title mb-1">{{blog.post_title}}</h2>
     <p class="blog-post-topic mb2 text-success">{{blog.post_topic}}</p>
     <p class="blog-post-meta">{{format_date blog.createdAt}}
-      <a href="#">Insert User</a></p>
+      <p>Contributed By: {{blog.user.username}}</p>
     <a href="/blog/{{blog.post_id}}">View Article</a>
   </article>
   <hr />
