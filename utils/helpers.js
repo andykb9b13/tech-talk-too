@@ -9,6 +9,6 @@ module.exports = {
   },
   truncateWords: (text) => {
     const words = text.split(" ");
-    return words.slice(0, 20).join(" ");
+    return words.slice(0, 40).join(" ");
   },
 };

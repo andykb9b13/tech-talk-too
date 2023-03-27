@@ -107,14 +107,23 @@ router.get("/blog", async (req, res) => {
   }
 });
 
-router.get("/comment", async (req, res) => {
+router.get("/comment/:id", async (req, res) => {
   try {
     const commentData = await Comment.findAll({
-      // where: {
-      //   post_id: req.body.post_id,
-      // },
+      where: {
+        post_id: req.params.id,
+      },
     });
-    // const comments = commentData.map((c) => c.get({ plain: true }));
+    const comments = commentData.map((c) => c.get({ plain: true }));
+    res.status(200).json(comments);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/comment", async (req, res) => {
+  try {
+    const commentData = await Comment.findAll();
     res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
@@ -125,8 +134,7 @@ router.post("/comment", async (req, res) => {
   try {
     const response = await Comment.create({
       post_id: req.body.post_id,
-      // user_id: req.session.user_id,
-      user_id: req.body.user_id,
+      user_id: req.session.user_id,
       comment_text: req.body.comment_text,
     });
     res.status(200).json(response);

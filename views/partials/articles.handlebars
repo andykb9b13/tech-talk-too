@@ -4,7 +4,7 @@
     <p class="blog-post-topic mb2 text-success">{{blog.post_topic}}</p>
     <p class="blog-post-meta">{{format_date blog.createdAt}}
       <a href="#">Insert User</a></p>
-    <p>{{blog.post_content}}</p>
+    <a href="/blog/{{blog.post_id}}" class="stretched-link">View Article</a>
   </article>
   <hr />
 {{/each}}
