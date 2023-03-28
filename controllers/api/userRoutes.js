@@ -5,6 +5,7 @@ const withAuth = require("../../utils/auth");
 const Comment = require("../../Models/Comment");
 // This is the api/user route
 
+// Returns all users
 router.get("/", withAuth, async (req, res) => {
   try {
     const allUsers = await User.findAll();
@@ -14,6 +15,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+// Creates a new user
 router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
@@ -32,12 +34,12 @@ router.post("/signup", async (req, res) => {
 
       res.json(newUser);
     });
-    // res.status(200).json(newUser);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// logs in a user
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
@@ -71,6 +73,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// logs out a user
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -81,6 +84,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// creates a new blog post
 router.post("/blog", async (req, res) => {
   try {
     const response = await Post.create({
@@ -95,20 +99,18 @@ router.post("/blog", async (req, res) => {
   }
 });
 
+// gets all of the posts
 router.get("/blog", async (req, res) => {
   try {
-    console.log("In the get blogs route");
     const postData = await Post.findAll();
     const blogs = postData.map((b) => b.get({ plain: true }));
-    // res.status(200).json(blogData);
-    console.log("Getting blogs", blogs);
-
     res.status(200).json(blogs);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// finds a specific post
 router.get("/blog/:id", async (req, res) => {
   try {
     const blog = await Post.findOne({
@@ -122,9 +124,9 @@ router.get("/blog/:id", async (req, res) => {
   }
 });
 
+// edits a post
 router.put("/blog/:id", async (req, res) => {
   try {
-    console.log("This is req.body", req.body);
     const editedPost = await Post.update(req.body, {
       where: {
         post_id: req.params.id,
@@ -136,21 +138,21 @@ router.put("/blog/:id", async (req, res) => {
   }
 });
 
+// deletes a post
 router.delete("/blog/:id", async (req, res) => {
   try {
-    console.log("hit delete route");
     const deletedPost = await Post.destroy({
       where: {
         post_id: req.params.id,
       },
     });
-    console.log("DeletedPost", deletedPost);
     res.status(200).json(deletedPost);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// gets a comment by a particular id
 router.get("/comment/:id", async (req, res) => {
   try {
     const commentData = await Comment.findAll({
@@ -160,13 +162,13 @@ router.get("/comment/:id", async (req, res) => {
       },
     });
     const comments = commentData.map((c) => c.get({ plain: true }));
-    console.log("This is comments", comments);
     res.status(200).json(comments);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// gets all the comments
 router.get("/comment", async (req, res) => {
   try {
     const commentData = await Comment.findAll();
@@ -176,26 +178,13 @@ router.get("/comment", async (req, res) => {
   }
 });
 
+// creates a new comment
 router.post("/comment", withAuth, async (req, res) => {
   try {
     const response = await Comment.create({
       post_id: req.body.post_id,
       user_id: req.session.user_id,
       comment_text: req.body.comment_text,
-    });
-    res.status(200).json(response);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/test/:id", async (req, res) => {
-  try {
-    const response = await User.findOne({
-      include: Post,
-      where: {
-        user_id: req.params.id,
-      },
     });
     res.status(200).json(response);
   } catch (err) {

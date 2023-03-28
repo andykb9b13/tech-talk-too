@@ -1,3 +1,4 @@
+// form for handing creating a new post
 const postFormHandler = async function (event) {
   event.preventDefault();
 
@@ -29,6 +30,7 @@ const postFormHandler = async function (event) {
   }
 };
 
+// redirects to the homepage
 const homepageRedirect = async (event) => {
   event.preventDefault();
   document.location.replace("/");

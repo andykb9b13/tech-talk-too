@@ -1,3 +1,4 @@
+// function for handling creating a new user
 const signupFormHandler = async function (event) {
   event.preventDefault();
 
@@ -25,6 +26,7 @@ const signupFormHandler = async function (event) {
   }
 };
 
+// sends user to login page
 const loginRedirect = async (event) => {
   event.preventDefault();
   document.location.replace("/login");

@@ -1,3 +1,4 @@
+// form for handling a user logging in
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -27,6 +28,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
+// redirects to the signup page
 const signupRedirect = async (event) => {
   event.preventDefault();
   document.location.replace("/signup");

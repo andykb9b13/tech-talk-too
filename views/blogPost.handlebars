@@ -1,4 +1,6 @@
 {{> navbar}}
+
+{{!-- displays featured article --}}
 <section id="blogPost-section">
   <div class="container">
     <div class="card mb-3">
@@ -7,6 +9,7 @@
       </div>
       <div class="card-body">
         <h2 class="card-title">{{blog.post_title}}</h2>
+        {{!-- This post-id is used for API calls --}}
         <p class="d-none" id="post-id">{{blog.post_id}}</p>
         <p>By: {{blog.user.username}}</p>
         <p>{{format_date blog.createdAt}}</p>
@@ -23,7 +26,7 @@
     {{/if}}
     </div>
 
-
+{{!-- Adding a comment if logged in --}}
 {{#if sessionData.isLoggedIn}}
     <div class="container">
       <div class="card mb-3">
