@@ -109,13 +109,28 @@ router.get("/blog", async (req, res) => {
   }
 });
 
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blog = await Post.findOne({
+      where: {
+        post_id: req.params.id,
+      },
+    });
+    res.status(200).json(blog);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.put("/blog/:id", async (req, res) => {
   try {
+    console.log("This is req.body", req.body);
     const editedPost = await Post.update(req.body, {
       where: {
         post_id: req.params.id,
       },
     });
+    res.status(200).json(editedPost);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -128,7 +143,7 @@ router.delete("/blog/:id", async (req, res) => {
         post_id: req.params.id,
       },
     });
-    res.status(200).json(deletedPost);
+    res.status(200);
   } catch (err) {
     res.status(500).json(err);
   }
