@@ -59,7 +59,15 @@ router.get("/blog/:id", async (req, res) => {
   try {
     const blogData = await Post.findByPk(req.params.id, {
       // where: { post_id: req.params.id },
-      include: [{ model: Comment }, { model: User }],
+      include: [
+        {
+          model: Comment,
+          include: {
+            model: User,
+          },
+        },
+        { model: User },
+      ],
     });
     const sessionData = {
       isLoggedIn: req.session.loggedIn,
