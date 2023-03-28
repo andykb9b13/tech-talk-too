@@ -138,12 +138,14 @@ router.put("/blog/:id", async (req, res) => {
 
 router.delete("/blog/:id", async (req, res) => {
   try {
+    console.log("hit delete route");
     const deletedPost = await Post.destroy({
       where: {
         post_id: req.params.id,
       },
     });
-    res.status(200);
+    console.log("DeletedPost", deletedPost);
+    res.status(200).json(deletedPost);
   } catch (err) {
     res.status(500).json(err);
   }

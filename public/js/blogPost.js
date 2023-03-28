@@ -37,10 +37,10 @@ const deletePost = async () => {
       method: "DELETE",
     });
     if (response.ok) {
-      document.location.replace("/");
-      alert("Article Deleted");
+      document.location.replace("/dashboard");
+      alert("Post Deleted!");
     } else {
-      alert("Failed to delete article");
+      alert("Failed to delete post.");
     }
   } catch (err) {
     console.log(err);
