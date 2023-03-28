@@ -2,6 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { Comment, Post, User } = require("../Models");
 
+// sends post information to the homepage
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -18,6 +19,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// sends post information to the dashboard for the logged-in user
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -39,6 +41,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+// renders the login page
 router.get("/login", (req, res) => {
   try {
     res.render("login");
@@ -47,6 +50,7 @@ router.get("/login", (req, res) => {
   }
 });
 
+// renders the signup page
 router.get("/signup", (req, res) => {
   try {
     res.render("signup");
@@ -55,10 +59,10 @@ router.get("/signup", (req, res) => {
   }
 });
 
+// gets a post by a particualr id and returns associated comments and user info
 router.get("/blog/:id", async (req, res) => {
   try {
     const blogData = await Post.findByPk(req.params.id, {
-      // where: { post_id: req.params.id },
       include: [
         {
           model: Comment,
@@ -74,9 +78,7 @@ router.get("/blog/:id", async (req, res) => {
       username: req.session.username,
     };
     const blog = blogData.get({ plain: true });
-    console.log("This is blog", blog);
     res.render("blogPost", { blog, sessionData });
-    // res.status(200).json(blog);
   } catch (err) {
     console.log(err);
     c;

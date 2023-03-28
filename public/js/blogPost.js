@@ -1,15 +1,18 @@
 console.log("In the blogs.js file");
 
+// get the comment text
 const getText = () => {
   const comment_text = document.querySelector("#comment-text").value;
   return comment_text;
 };
 
+// getting the id from the hidden post_id element
 const getId = () => {
   const post_id = document.querySelector("#post-id").innerText;
   return post_id;
 };
 
+// function for creating a comment
 const createComment = async () => {
   try {
     const comment_text = await getText();
@@ -29,6 +32,7 @@ const createComment = async () => {
   }
 };
 
+// function for deleting a post
 const deletePost = async () => {
   try {
     const confirmDelete = confirm("Are you sure you want to delete this post?");
@@ -52,6 +56,7 @@ const deletePost = async () => {
   }
 };
 
+// gets the information for specific blog to be edited
 const getBlog = async () => {
   try {
     const post_id = document.querySelector("#post-id").innerText;
@@ -66,6 +71,7 @@ const getBlog = async () => {
   }
 };
 
+// puts the information from getBlog into the elements on the page to be edited
 const populateEditFields = async () => {
   try {
     const blog = await getBlog();
@@ -82,6 +88,7 @@ const populateEditFields = async () => {
   }
 };
 
+// saves the edited blog
 const saveBlogEdit = async () => {
   const post_id = document.querySelector("#post-id").innerText;
   const blogTitle = document.querySelector("#blog-title");
